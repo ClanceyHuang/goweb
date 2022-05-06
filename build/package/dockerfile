@@ -1,0 +1,7 @@
+FROM ubuntu:20.04
+WORKDIR /goweb
+COPY configs/ ./configs
+COPY web/ ./web
+COPY cmd/ ./cmd
+WORKDIR /goweb/cmd
+CMD ["./GoWeb-linux"]

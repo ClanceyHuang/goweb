@@ -1,0 +1,15 @@
+{
+    "static": "../web",
+    "template": "../web/templates/*.tmpl",
+    "address": "",
+    "port": 8080,
+    "pprofPort": 8081,
+    "handleTimeoutSecond": 5,
+    "log": {
+        "trace": "logs/trace.log",
+        "info": "logs/info.log",
+        "warning": "logs/warning.log",
+        "error": "logs/error.log"
+    }
+}
+  

@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+// 定义配置结构体
 type config struct {
 	Static              string    `json:"static"`
 	Template            string    `json:"template"`
@@ -15,6 +16,7 @@ type config struct {
 	Log                 logConfig `json:"log"`
 }
 
+// 定义日志配置结构体
 type logConfig struct {
 	Trace   string `json:"trace"`
 	Info    string `json:"info"`
@@ -24,6 +26,11 @@ type logConfig struct {
 
 var Config config
 
+/**
+ * 加载配置的函数
+ * @param string configFile 配置文件路径
+ * @return mixed 返回抛错或者对应的配置文件数据
+ */
 func LoadConfig(configFile string) error {
 	configData, err := os.ReadFile(configFile)
 	if err != nil {

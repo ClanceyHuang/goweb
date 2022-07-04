@@ -9,16 +9,32 @@ import (
 	"goweb/internal/templates"
 	"net/http"
 	_ "net/http/pprof"
+	"os"
 	"strconv"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
 
 	// 加载 json 配置
 	config.LoadConfig("../configs/config.json")
-
 	// 加载日志模块
 	log.LoadLog()
+
+	// 加载项目的环境配置，环境变量，数据库配置，密钥等等。
+	err := godotenv.Load("../.env")
+	if err != nil {
+		log.Error.Println("Error loading .env file")
+	}
+
+	cur_env := os.Getenv("CUR_ENV")
+	db_database := os.Getenv("DB_DATABASE")
+	db_username := os.Getenv("DB_USERNAME")
+	// 打印调试显示
+	log.Info.Println("CUR_ENV: ", cur_env)
+	log.Info.Println("DATABASE: ", db_database)
+	log.Info.Println("USERNAME: ", db_username)
 
 	// 载入模板
 	templates.LoadTemplate(config.Config.Template)

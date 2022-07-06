@@ -7,11 +7,11 @@ import (
 	"goweb/internal/log"
 	"goweb/internal/middleware"
 	"goweb/internal/templates"
+	"goweb/internal/database/mysql"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
 	"strconv"
-
 	"github.com/joho/godotenv"
 )
 
@@ -35,6 +35,7 @@ func main() {
 	log.Info.Println("CUR_ENV: ", cur_env)
 	log.Info.Println("DATABASE: ", db_database)
 	log.Info.Println("USERNAME: ", db_username)
+
 
 	// 载入模板
 	templates.LoadTemplate(config.Config.Template)
